@@ -8,18 +8,22 @@
 // 4. Replace placeholder data with props/state
 
 
+import type { RefObject } from "react";
+
 export type PlayPageCanvasStartGameActionId = "start-game-1";
 
 export interface PlayPageCanvasStartGameProps {
   actions?: {
     "start-game-1"?: () => void;
   };
-
+  canvasRef: RefObject<HTMLCanvasElement>;
+  gameStatus: string;
+  highScore: number;
 }
 
 export type PlayPageCanvasStartGameActionCallbacks = NonNullable<PlayPageCanvasStartGameProps["actions"]>;
 
-export function PlayPageCanvasStartGame({ actions }: PlayPageCanvasStartGameProps) {
+export function PlayPageCanvasStartGame({ actions, canvasRef, gameStatus, highScore }: PlayPageCanvasStartGameProps) {
   return (
     <>
       {/* Root Surface: SURF_PLAY_PAGE */}
@@ -39,7 +43,7 @@ export function PlayPageCanvasStartGame({ actions }: PlayPageCanvasStartGameProp
             <div className="flex items-center gap-6">
               <div className="bg-slate-900 border border-slate-800 rounded-xl px-5 py-3 shadow-inner text-right">
                 <span className="block text-xs uppercase font-semibold tracking-wider text-slate-400 mb-0.5">High Score</span>
-                <span data-surface-id="SURF_HIGH_SCORE_DISPLAY" className="text-2xl font-mono font-bold text-amber-400" data-setfarm-element-ref="E000002" data-observable-refs="OBS_START_GAME_HIGH_SCORE_VALUE">0</span>
+                <span data-surface-id="SURF_HIGH_SCORE_DISPLAY" className="text-2xl font-mono font-bold text-amber-400" data-setfarm-element-ref="E000002" data-observable-refs="OBS_START_GAME_HIGH_SCORE_VALUE" data-value={String(highScore)}>{highScore}</span>
               </div>
             </div>
           </div>
@@ -51,7 +55,7 @@ export function PlayPageCanvasStartGame({ actions }: PlayPageCanvasStartGameProp
             <div className="w-full flex items-center justify-between mb-4 px-2">
               <div className="flex items-center gap-2">
                 <span className="text-xs uppercase tracking-wider text-slate-400 font-medium">Status:</span>
-                <span data-surface-id="SURF_GAME_STATUS" className="text-sm font-semibold text-emerald-400" data-setfarm-element-ref="E000003" data-observable-refs="OBS_START_GAME_GAME_STARTED_MESSAGE">Game started</span>
+                <span data-surface-id="SURF_GAME_STATUS" className="text-sm font-semibold text-emerald-400" data-setfarm-element-ref="E000003" data-observable-refs="OBS_START_GAME_GAME_STARTED_MESSAGE" data-value={gameStatus}>{gameStatus}</span>
               </div>
               <div className="text-xs text-slate-500 font-mono">
                 Resolution: 800 x 480
@@ -61,7 +65,7 @@ export function PlayPageCanvasStartGame({ actions }: PlayPageCanvasStartGameProp
             {/* Game Canvas Surface: SURF_GAME_CANVAS */}
             <div className="relative w-full max-w-3xl aspect-[5/3] bg-slate-950 rounded-xl border border-slate-800/90 shadow-inner flex items-center justify-center overflow-hidden group">
               {/* Exact Surface Attribute for Canvas */}
-              <canvas data-surface-id="SURF_GAME_CANVAS" width="800" height="480" className="w-full h-full block bg-slate-950" data-setfarm-element-ref="E000004"></canvas>
+              <canvas ref={canvasRef} data-surface-id="SURF_GAME_CANVAS" width="800" height="480" className="w-full h-full block bg-slate-950" data-setfarm-element-ref="E000004"></canvas>
       
               {/* Decorative Canvas Overlay / Retro Grid Details */}
               <div className="absolute inset-0 pointer-events-none border border-emerald-500/10 rounded-xl"></div>
