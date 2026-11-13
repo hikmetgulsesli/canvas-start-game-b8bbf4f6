@@ -1,0 +1,69 @@
+{
+  "generatedAt": "2026-11-13T00:11:16.969Z",
+  "screenCount": 1,
+  "screens": {
+    "0c56e49126ed4766951739bc3d6663fc": {
+      "screenId": "0c56e49126ed4766951739bc3d6663fc",
+      "materialSymbolsRequired": false,
+      "sections": [],
+      "buttons": [
+        {
+          "kind": "button",
+          "label": "Start game",
+          "classes": [
+            "w-full",
+            "sm:w-auto",
+            "inline-flex",
+            "items-center",
+            "justify-center",
+            "px-8",
+            "py-3.5",
+            "rounded-xl",
+            "text-sm",
+            "font-bold",
+            "text-white",
+            "bg-indigo-600",
+            "hover:bg-indigo-500",
+            "active:bg-indigo-700",
+            "shadow-lg",
+            "shadow-indigo-600/30",
+            "transition-all",
+            "duration-150",
+            "cursor-pointer",
+            "focus:outline-none",
+            "focus:ring-2",
+            "focus:ring-indigo-400",
+            "focus:ring-offset-2",
+            "focus:ring-offset-slate-900"
+          ],
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "inputs": [],
+      "navLinks": [],
+      "cards": [],
+      "icons": [],
+      "images": [],
+      "cssVars": {},
+      "colorPalette": {},
+      "fonts": [],
+      "layoutHints": {
+        "flexDirection": "col",
+        "gap": "4"
+      },
+      "behaviorContract": [
+        {
+          "kind": "button",
+          "label": "Start game",
+          "icon": null,
+          "action": "click-action",
+          "expectedBehavior": "produce visible DOM/state/URL feedback; never empty onClick"
+        }
+      ],
+      "tabBar": [],
+      "title": "Play page - Canvas Start Game"
+    }
+  }
+}
